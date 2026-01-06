@@ -44,6 +44,7 @@ const ThemeControls = ({ themeConfig, setThemeConfig, handleExport }) => {
                         <option value="java">Java</option>
                         <option value="c">C</option>
                         <option value="cpp">C++</option>
+                        <option value="csharp">C#</option>
                         <option value="markup">HTML</option>
                         <option value="css">CSS</option>
                         <option value="json">JSON</option>
@@ -128,7 +129,7 @@ const ThemeControls = ({ themeConfig, setThemeConfig, handleExport }) => {
 
             {/* Custom Gradient Builder */}
             <div className="control-group custom-gradient-group">
-                <label className="label" style={{ marginBottom: '12px', color: '#fff' }}>Custom Gradient</label>
+                <label className="label mb-12 text-white">Custom Gradient</label>
                 <div className="color-inputs">
                     <input type="color" className="color-picker" value={gradient.c1} onChange={e => updateCustomGradient({ c1: e.target.value })} />
                     <input type="color" className="color-picker" value={gradient.c2} onChange={e => updateCustomGradient({ c2: e.target.value })} />
@@ -141,7 +142,7 @@ const ThemeControls = ({ themeConfig, setThemeConfig, handleExport }) => {
                         onChange={e => updateCustomGradient({ angle: e.target.value })}
                         className="angle-input"
                     />
-                    <span className="angle-label" style={{ minWidth: '30px' }}>{gradient.angle}°</span>
+                    <span className="angle-label min-w-30">{gradient.angle}°</span>
                 </div>
             </div>
 

@@ -2,6 +2,7 @@ import React, { useState, useRef, useCallback } from 'react';
 import { toPng } from 'html-to-image';
 import PreviewFrame from './components/PreviewFrame';
 import ThemeControls from './components/ThemeControls';
+import { exportToPng } from './utils/exportImage';
 
 function App() {
   const [code, setCode] = useState(`function greeting(name) {
@@ -25,22 +26,7 @@ function App() {
 
   const handleExport = useCallback(async () => {
     if (exportRef.current === null) return;
-
-    try {
-      const dataUrl = await toPng(exportRef.current, {
-        cacheBust: true,
-        pixelRatio: 2,
-        style: {
-          background: themeConfig.background // Inject background for the snapshot
-        }
-      });
-      const link = document.createElement('a');
-      link.download = 'bege.png';
-      link.href = dataUrl;
-      link.click();
-    } catch (err) {
-      console.error('Export failed:', err);
-    }
+    await exportToPng(exportRef.current, themeConfig);
   }, [exportRef, themeConfig]);
 
   return (
@@ -60,7 +46,7 @@ function App() {
           handleExport={handleExport}
         />
       </div>
-    </div>
+    </div >
   );
 }
 

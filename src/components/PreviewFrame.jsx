@@ -29,7 +29,7 @@ const PreviewFrame = ({
 
     return (
         <div
-            className="preview-outer-container flex-center preview-frame-container"
+            className="preview-frame-wrapper"
             style={{
                 background: background,
             }}
@@ -39,59 +39,40 @@ const PreviewFrame = ({
             {/* EXPORT CONTAINER */}
             <div
                 ref={exportRef}
+                className="preview-export-container"
                 style={{
-                    background: 'transparent',
-                    padding: `${padding}px`,
-                    width: 'auto',
-                    maxWidth: '100%',
-                    borderRadius: '0',
-                    display: 'flex',
+                    '--user-padding': `${padding}px`,
                 }}
             >
                 <div
-                    className={`window-frame glass-panel`}
+                    className={`preview-window glass-panel`}
                     style={{
-                        width: `${width}px`, // Controlled width
-                        minWidth: '300px', // Minimum safety
-                        borderRadius: '12px',
-                        overflow: 'hidden',
-                        boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
-                        background: currentTheme.background,
-                        border: currentTheme.borderColor,
-                        transition: 'width 0.3s ease'
+                        width: `${width}px`,
+                        '--bg-color': currentTheme.background,
+                        '--border-color': currentTheme.borderColor,
+                        '--header-bg': currentTheme.headerColor,
+                        '--text-color': currentTheme.textColor,
                     }}
                 >
                     {windowStyle !== 'none' && (
-                        <div
-                            className="window-header"
-                            style={{
-                                padding: '12px 16px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                background: currentTheme.headerColor,
-                                borderBottom: currentTheme.borderColor
-                            }}
-                        >
+                        <div className="preview-window-header">
                             {windowStyle === 'mac' && (
-                                <div className="window-controls mac" style={{ display: 'flex', gap: '8px' }}>
-                                    <span style={{ width: 12, height: 12, borderRadius: '50%', background: '#ff5f56' }} />
-                                    <span style={{ width: 12, height: 12, borderRadius: '50%', background: '#ffbd2e' }} />
-                                    <span style={{ width: 12, height: 12, borderRadius: '50%', background: '#27c93f' }} />
+                                <div className="preview-window-controls mac">
+                                    <span className="control-dot red" />
+                                    <span className="control-dot yellow" />
+                                    <span className="control-dot green" />
                                 </div>
                             )}
                             {windowStyle === 'windows' && (
-                                <div className="window-controls windows" style={{ display: 'flex', gap: '12px', marginLeft: 'auto' }}>
-                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" strokeWidth="1" stroke={currentTheme.textColor}><path d="M1 6h10" /></svg>
-                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" strokeWidth="1" stroke={currentTheme.textColor}><rect x="1.5" y="1.5" width="9" height="9" /></svg>
-                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" strokeWidth="1" stroke={currentTheme.textColor}><path d="M1 1l10 10M11 1L1 11" /></svg>
+                                <div className="preview-window-controls windows">
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" strokeWidth="1" stroke="currentColor"><path d="M1 6h10" /></svg>
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" strokeWidth="1" stroke="currentColor"><rect x="1.5" y="1.5" width="9" height="9" /></svg>
+                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" strokeWidth="1" stroke="currentColor"><path d="M1 1l10 10M11 1L1 11" /></svg>
                                 </div>
                             )}
 
-                            {title && windowStyle !== 'none' && (
-                                <div style={{
-                                    position: 'absolute', left: 0, right: 0, textAlign: 'center', pointerEvents: 'none',
-                                    color: currentTheme.textColor, fontSize: '13px', opacity: 0.7, fontFamily: 'sans-serif', fontWeight: 500
-                                }}>
+                            {title && (
+                                <div className="preview-window-title">
                                     {title}
                                 </div>
                             )}
@@ -99,7 +80,7 @@ const PreviewFrame = ({
                         </div>
                     )}
 
-                    <div className="window-content" style={{ color: currentTheme.textColor }}>
+                    <div className="window-content">
                         <CodeEditor code={code} setCode={setCode} language={language} />
                     </div>
                 </div>
