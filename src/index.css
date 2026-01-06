@@ -62,7 +62,31 @@ body {
   background: #555;
 }
 
-/* ThemeControls Styles */
+/* App Layout */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.preview-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1e1e1e;
+}
+
+.sidebar {
+  width: 400px;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+/* Base ThemeControls Styles */
 .theme-controls-content {
   padding: 24px;
   display: flex;
@@ -71,6 +95,49 @@ body {
   height: 100%;
   border-left: 1px solid rgba(255, 255, 255, 0.1);
   overflow-y: auto;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .preview-area {
+    min-height: 50vh;
+    padding: 0;
+    align-items: flex-start;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .theme-controls-content {
+    height: auto;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    overflow-y: visible;
+  }
+
+  .preview-frame-container {
+    padding: 20px !important;
+    height: auto !important;
+    min-height: 300px;
+  }
+}
+
+.preview-frame-container {
+  width: 100%;
+  min-height: 400px;
+  height: 100%;
+  overflow: auto;
+  padding: 40px;
 }
 
 .config-header {

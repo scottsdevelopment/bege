@@ -44,8 +44,8 @@ function App() {
   }, [exportRef, themeConfig]);
 
   return (
-    <div className="app-container" style={{ display: 'flex', height: '100vh', width: '100vw', overflow: 'hidden' }}>
-      <div style={{ flex: 1, position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#1e1e1e' }}>
+    <div className="app-container">
+      <div className="preview-area">
         <PreviewFrame
           code={code}
           setCode={setCode}
@@ -53,7 +53,7 @@ function App() {
           exportRef={exportRef}
         />
       </div>
-      <div style={{ width: '400px', flexShrink: 0, zIndex: 10 }}>
+      <div className="sidebar">
         <ThemeControls
           themeConfig={themeConfig}
           setThemeConfig={setThemeConfig}

@@ -2,6 +2,8 @@
 
 **BEGE** is a beautiful, web-based tool for creating aesthetic code screenshots. Whether you're sharing a "Bad Example" to warn others or a "Good Example" to teach, BEGE makes your snippets look premium.
 
+### 🔴 [Live Demo](https://scottsdevelopment.github.io/bege/) 🟢
+
 ![BEGE Screenshot](./bege.png)
 
 ## Features

@@ -29,16 +29,8 @@ const PreviewFrame = ({
 
     return (
         <div
-            className="preview-outer-container flex-center"
+            className="preview-outer-container flex-center preview-frame-container"
             style={{
-                width: '100%',
-                minHeight: '400px',
-                height: '100%',
-                overflow: 'auto',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '40px',
                 background: background,
             }}
         >
